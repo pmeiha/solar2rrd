@@ -9,7 +9,7 @@ from datetime import datetime, timezone, timedelta, tzinfo
 from zoneinfo import ZoneInfo
 import calendar
 import csv
-from pwrdata import PowerDataList, PowerDataDict
+# from pwrdata import PowerDataList, PowerDataDict
 import urllib.parse
 import argparse
 import pprint
