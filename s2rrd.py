@@ -433,7 +433,7 @@ timetable = {}
 
 # for day in range(1,calendar.monthrange(iYear, iMonth)[1]+1 ):
 for day in [ iDay ]:  
-    #PowerDataDict = {}
+    PowerDataDict = {}
     start = datetime( iYear, iMonth, day, hour=0, minute=0,  second=0,  tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S%:z')
     end   = datetime( iYear, iMonth, day, hour=23, minute=59, second=59, tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S%:z')
     startH = urllib.parse.quote(start)
