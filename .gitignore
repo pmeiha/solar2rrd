@@ -1,0 +1,10 @@
+.venv
+.vscode
+__pycache__
+data-in
+data-out
+data-mod
+tmp
+.env
+pwrdata.py
+strom-v1.ods
