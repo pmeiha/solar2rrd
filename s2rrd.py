@@ -365,6 +365,8 @@ parser.add_argument('-d','--day',help='day ',default=31, type=int)
 parser.add_argument('-m','--month',help='month ',default=1, type=int)
 parser.add_argument('-y','--year',help='year ',default=2025, type=int)
 
+parser.add_argument('-p','--outpath',help='path for output files',default="data-in")
+
 parser.add_argument('-r','--requestinterval',help='time between cloud requests',default='-1', type=int)
 
 parser.add_argument('-l','--loglevel',help='loglevel default warning or higher', action='count', default=0)
@@ -383,6 +385,9 @@ match args.loglevel:
         logger.setLevel(logging.INFO)
 
 glob['requestinterval'] = int(args.requestinterval)
+
+glob["data-in"] = args.outpath
+
 
 # login to the cloud
 logger.info(f's2rrd_login :{s2rrd_login()}')
@@ -463,9 +468,12 @@ for day in [ iDay ]:
 
             timetable[timekey]["infra"] = {}
             timetable[timekey]["infra"]["TotalBezug"] = timetable[timekey]["Wechselrichter"]['summ'] + timetable[timekey]["Verbrauch"]['summ']['iWh'] + timetable[timekey]["Batterie"]['summ']['bdWh']
+            timetable[timekey]["infra"]["NettoBezug"] = timetable[timekey]["infra"]["TotalBezug"] - timetable[timekey]["Verbrauch"]['summ']['eWh'] - timetable[timekey]["Batterie"]['summ']['bcWh']
+
+            emptyMin = allDev == 0 and timetable[timekey]["infra"]["TotalBezug"] == 0 and timetable[timekey]["infra"]["NettoBezug"] == 0
+
             if timetable[timekey]["infra"]["TotalBezug"] == 0:
                 timetable[timekey]["infra"]["TotalBezug"] = 1 / 3
-            timetable[timekey]["infra"]["NettoBezug"] = timetable[timekey]["infra"]["TotalBezug"] - timetable[timekey]["Verbrauch"]['summ']['eWh'] - timetable[timekey]["Batterie"]['summ']['bcWh']
             timetable[timekey]["infra"]["Sonne%"] = timetable[timekey]["Wechselrichter"]['summ'] / timetable[timekey]["infra"]["TotalBezug"]
             timetable[timekey]["infra"]["Netz%"] = timetable[timekey]["Verbrauch"]['summ']['iWh'] / timetable[timekey]["infra"]["TotalBezug"]
             timetable[timekey]["infra"]["Battery%"] = timetable[timekey]["Batterie"]['summ']['bdWh'] / timetable[timekey]["infra"]["TotalBezug"]
@@ -563,13 +571,14 @@ for day in [ iDay ]:
             mintableSum[f'S{tarif}Fk'] += timetable[timekey]["FrigoK"]['summ'] * timetable[timekey]["infra"]["Sonne%"]
             mintableSum[f'B{tarif}Fk'] += timetable[timekey]["FrigoK"]['summ'] * timetable[timekey]["infra"]["Battery%"]
 
-            minLine = []
-            for k in mintable[0]:
-                minLine.append(mintableSum[k])
+            if not emptyMin:
+                minLine = []
+                for k in mintable[0]:
+                    minLine.append(mintableSum[k])
             
-            mintable.append(minLine)
+                mintable.append(minLine)
 
-    sDir = "data-in"
+    sDir = glob["data-in"]
     sFile = f'{iYear}-{iMonth:02d}-{day:02d}_min.csv'
     with open(os.path.join(sDir,sFile), 'w') as outf:
         writer = csv.writer(outf, delimiter=';')
