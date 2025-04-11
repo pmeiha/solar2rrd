@@ -193,7 +193,7 @@ createInfraPng "$std" "$end" 60   "${pngdir}/s2infra_day.png"
 if [ $monthfile -eq 1 ]
 then
   createInfraPng "$stw" "$end" 600  "${pngdir}/s2infra_week.png"
-  createInfraPng "$stm" "$end" 3600  "${pngdir}/s2infra_mnt.png"
+  createInfraPng "$stm" "$end" 600  "${pngdir}/s2infra_mnt.png"
   createInfraPng "$stj" "$end" 36000 "${pngdir}/s2infra_year.png"
 fi
 
@@ -263,21 +263,21 @@ then
   createDevPng "$stw" "$end" 600 "${pngdir}/s2Fk_week.png"   "Fk"   "Frigo Keller"            "500"
 
   echo "$(date) generate dev month"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Re_mnt.png"   "Rest" "RestVerbraucher"         "11000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Wp_mnt.png"   "Wp"   "Wärmepumpe"              "5000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2La_mnt.png"   "La"   "Ladestation"             "13000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2IT_mnt.png"   "IT"   "IT"                      "800"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Lk_mnt.png"   "Lk"   "Luftentfewuchter Keller" "500"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Bg_mnt.png"   "Bg"   "Bewässerung Garten"      "100"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Bt_mnt.png"   "Bt"   "Bewässerung Topf"        "20"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Bh_mnt.png"   "Bh"   "Begleitheizung"          "1000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Zh_mnt.png"   "Zh"   "Zusatzheizung"           "3000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2W1_mnt.png"   "W1"   "Weinacht1"               "1000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2W2_mnt.png"   "W2"   "Weihnacht2"              "1000"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Wa_mnt.png"   "Wa"   "Waschen"                 "2800"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Tr_mnt.png"   "Tr"   "Trocknen"                "2800"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Fe_mnt.png"   "Fe"   "Frigo Estrich"           "500"
-  createDevPng "$stm" "$end" 3600 "${pngdir}/s2Fk_mnt.png"   "Fk"   "Frigo Keller"            "500"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Re_mnt.png"   "Rest" "RestVerbraucher"         "11000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Wp_mnt.png"   "Wp"   "Wärmepumpe"              "5000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2La_mnt.png"   "La"   "Ladestation"             "13000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2IT_mnt.png"   "IT"   "IT"                      "800"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Lk_mnt.png"   "Lk"   "Luftentfewuchter Keller" "500"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Bg_mnt.png"   "Bg"   "Bewässerung Garten"      "100"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Bt_mnt.png"   "Bt"   "Bewässerung Topf"        "20"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Bh_mnt.png"   "Bh"   "Begleitheizung"          "1000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Zh_mnt.png"   "Zh"   "Zusatzheizung"           "3000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2W1_mnt.png"   "W1"   "Weinacht1"               "1000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2W2_mnt.png"   "W2"   "Weihnacht2"              "1000"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Wa_mnt.png"   "Wa"   "Waschen"                 "2800"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Tr_mnt.png"   "Tr"   "Trocknen"                "2800"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Fe_mnt.png"   "Fe"   "Frigo Estrich"           "500"
+  createDevPng "$stm" "$end" 600 "${pngdir}/s2Fk_mnt.png"   "Fk"   "Frigo Keller"            "500"
 fi
 
 for dev in "s2Re" \
