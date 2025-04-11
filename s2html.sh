@@ -193,7 +193,7 @@ createInfraPng "$std" "$end" 60   "${pngdir}/s2infra_day.png"
 if [ $monthfile -eq 1 ]
 then
   createInfraPng "$stw" "$end" 600  "${pngdir}/s2infra_week.png"
-  createInfraPng "$stm" "$end" 600  "${pngdir}/s2infra_mnt.png"
+  createInfraPng "$stm" "$end" 3600  "${pngdir}/s2infra_mnt.png"
   createInfraPng "$stj" "$end" 3600 "${pngdir}/s2infra_year.png"
 fi
 
