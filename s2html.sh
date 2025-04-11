@@ -201,6 +201,22 @@ htmlmain="$htmlfile"
 
 htmlHeader $htmlfile
 
+echo "<a href='${tagpath}s2Re.html'>RestVerbraucher        ${tagpath}s2Re.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Wp.html'>Wärmepumpe             ${tagpath}s2Wp.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2La.html'>Ladestation            ${tagpath}s2La.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2IT.html'>IT                     ${tagpath}s2IT.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Lk.html'>Luftentfewuchter Keller${tagpath}s2Lk.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Bg.html'>Bewässerung Garten     ${tagpath}s2Bg.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Bt.html'>Bewässerung Topf       ${tagpath}s2Bt.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Bh.html'>Begleitheizung         ${tagpath}s2Bh.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Zh.html'>Zusatzheizung          ${tagpath}s2Zh.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2W1.html'>Weinacht1              ${tagpath}s2W1.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2W2.html'>Weihnacht2             ${tagpath}s2W2.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Wa.html'>Waschen                ${tagpath}s2Wa.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Tr.html'>Trocknen               ${tagpath}s2Tr.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Fe.html'>Frigo Estrich          ${tagpath}s2Fe.html</a>" >>$htmlfile
+echo "<a href='${tagpath}s2Fk.html'>Frigo Keller           ${tagpath}s2Fk.html</a>" >>$htmlfile
+
 echo "<p>Tages Graphen</p>" >>$htmlfile
 
 echo "<IMG SRC='${tagpath}s2infra_day.png' ALT='Verbrauchsgraph'><br>" >>$htmlfile
@@ -300,6 +316,23 @@ do
     htmlfile="${pngdir}/${dev}.html"
 
     htmlHeader $htmlfile
+
+    echo "<a href='${tagpath}s2Re.html'>RestVerbraucher        ${tagpath}s2Re.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Wp.html'>Wärmepumpe             ${tagpath}s2Wp.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2La.html'>Ladestation            ${tagpath}s2La.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2IT.html'>IT                     ${tagpath}s2IT.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Lk.html'>Luftentfewuchter Keller${tagpath}s2Lk.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Bg.html'>Bewässerung Garten     ${tagpath}s2Bg.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Bt.html'>Bewässerung Topf       ${tagpath}s2Bt.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Bh.html'>Begleitheizung         ${tagpath}s2Bh.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Zh.html'>Zusatzheizung          ${tagpath}s2Zh.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2W1.html'>Weinacht1              ${tagpath}s2W1.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2W2.html'>Weihnacht2             ${tagpath}s2W2.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Wa.html'>Waschen                ${tagpath}s2Wa.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Tr.html'>Trocknen               ${tagpath}s2Tr.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Fe.html'>Frigo Estrich          ${tagpath}s2Fe.html</a>" >>$htmlfile
+    echo "<a href='${tagpath}s2Fk.html'>Frigo Keller           ${tagpath}s2Fk.html</a>" >>$htmlfile
+
     echo "<a href='${mainpath}'>Zurück</a><br>" >>$htmlfile
     echo "<IMG SRC='${tagpath}${dev}_day.png' ALT='Verbrauchsgraph'><br>" >>$htmlfile
     echo "<a href='${mainpath}'>Zurück</a><br>" >>$htmlfile
