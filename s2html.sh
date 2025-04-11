@@ -194,7 +194,7 @@ if [ $monthfile -eq 1 ]
 then
   createInfraPng "$stw" "$end" 600  "${pngdir}/s2infra_week.png"
   createInfraPng "$stm" "$end" 3600  "${pngdir}/s2infra_mnt.png"
-  createInfraPng "$stj" "$end" 3600 "${pngdir}/s2infra_year.png"
+  createInfraPng "$stj" "$end" 36000 "${pngdir}/s2infra_year.png"
 fi
 
 htmlmain="$htmlfile"
