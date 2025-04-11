@@ -86,8 +86,9 @@ def getparameter():
   parser.add_argument("-r", "--rrdfile", help="rrd db file name (default rrd/s2.rrd", default="rrd/s2.rrd")
   parser.add_argument("-i", "--inputfile", help="csv input file", required=True)
   #parser.add_argument("-i", "--inputfile", help="csv input file", default="data-in/2025-03-28_min.csv")
-  args = parser.parse_args()
   parser.add_argument("-d", "--daemon", help="rrdcached address", default="")
+  
+  args = parser.parse_args()
   
   rrdfile = args.rrdfile
   inputfile = args.inputfile
