@@ -430,11 +430,11 @@ for dev in ["s2Re","s2Wp","s2La","s2IT","s2Lk","s2Bg","s2Bt","s2Bh","s2Zh","s2W1
   htmlmain.append(f"<a href='{tagpath}s2Fk.html'>Frigo Keller           {tagpath}s2Fk.html</a>")
 
   htmlmain.append(f"<a href='{mainpath}'>Infra</a><br>")
-  htmlmain.append(f"<IMG SRC='{tagpath}${dev}_day.png' ALT='Verbrauchsgraph'><br>")
+  htmlmain.append(f"<IMG SRC='{tagpath}{dev}_day.png' ALT='Verbrauchsgraph'><br>")
   htmlmain.append(f"<a href='{mainpath}'>Infra</a><br>")
-  htmlmain.append(f"<IMG SRC='{tagpath}${dev}_week.png' ALT='Verbrauchsgraph'><br>")
+  htmlmain.append(f"<IMG SRC='{tagpath}{dev}_week.png' ALT='Verbrauchsgraph'><br>")
   htmlmain.append(f"<a href='{mainpath}'>Infra</a><br>")
-  htmlmain.append(f"<IMG SRC='{tagpath}${dev}_mnt.png' ALT='Verbrauchsgraph'><br>")
+  htmlmain.append(f"<IMG SRC='{tagpath}{dev}_mnt.png' ALT='Verbrauchsgraph'><br>")
   htmlmain.append(f"<a href='{mainpath}'>Infra</a><br>")
     
   htmlmain = htmlEnd(htmlmain)
