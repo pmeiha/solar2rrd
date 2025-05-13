@@ -58,7 +58,7 @@ def getparameter():
   htmlfile = args.htmlfile
   tagpath = args.tagpath
   monthfile = args.monthfile
-  mainpath = f'{tagpath}/{htmlfile}'
+  mainpath = f'{tagpath}{htmlfile}'
 
   fEchoDebug(1,'RRDFILE     :' + rrdfile)
   fEchoDebug(1,'DEBUG       :' + str(debug))
