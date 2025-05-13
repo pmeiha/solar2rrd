@@ -10,4 +10,5 @@ pwrdata.py
 strom-v1.ods
 s2rrd-test.py
 rrd
+.~lock.*
 

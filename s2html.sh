@@ -152,18 +152,18 @@ function createDevPng {
         --start "$start" \
         --end "$end" \
         --title "$tstart - $tend" \
-        --step 1 \
+        --step $step \
         --height=500 \
         --width=1500 \
         --vertical-label=W \
         --upper-limit=${max} \
         --rigid \
-        "DEF:NN-raw=$rrdfile:NN${dev}:MAX:step=$step" \
-        "DEF:NH-raw=$rrdfile:NH${dev}:MAX:step=$step" \
-        "DEF:SN-raw=$rrdfile:SN${dev}:MAX:step=$step" \
-        "DEF:SH-raw=$rrdfile:SH${dev}:MAX:step=$step" \
-        "DEF:BN-raw=$rrdfile:BN${dev}:MAX:step=$step" \
-        "DEF:BH-raw=$rrdfile:BH${dev}:MAX:step=$step" \
+        "DEF:NN-raw=$rrdfile:NN${dev}:AVERAGE:step=$step" \
+        "DEF:NH-raw=$rrdfile:NH${dev}:AVERAGE:step=$step" \
+        "DEF:SN-raw=$rrdfile:SN${dev}:AVERAGE:step=$step" \
+        "DEF:SH-raw=$rrdfile:SH${dev}:AVERAGE:step=$step" \
+        "DEF:BN-raw=$rrdfile:BN${dev}:AVERAGE:step=$step" \
+        "DEF:BH-raw=$rrdfile:BH${dev}:AVERAGE:step=$step" \
         "CDEF:Netz=NN-raw,NH-raw,+,3600,*," \
         "CDEF:Sonne=SN-raw,SH-raw,+,3600,*," \
         "CDEF:Battery=BN-raw,BH-raw,+,3600,*," \
