@@ -225,14 +225,14 @@ def createInfraPng(start="1", end="1", step="1", pngfile="not_correct_png_parame
     "CDEF:BatNe=BatNe-raw,3600,*",
     "CDEF:Self1=PV,Netto,-",
     "CDEF:Self=Self1,0,GE,Netto,PV,IF",
-    f"AREA:Netto#003dff:BattVerbrauch {valuesTotal['selfB']:.2f} kWh {valuesTotal['Netto']:.2f} kWh",
+    f"AREA:Netto#003dff:BattVerbrauch {valuesTotal['selfB']:.2f} kWh",
     f"AREA:Self#007215:PvVerbrauch {valuesTotal['selfP']:.2f} kWh",
     f"AREA:SoBat#fdce00:SoBat {valuesTotal['SoBat']:.2f} kWh:STACK",
     f"AREA:SoNe#b1fd00:SoNe {valuesTotal['SoNe']:.2f} kWh:STACK",
     f"AREA:Ni#FF0000:NetzImport {valuesTotal['Ni']:.2f} kWh",
     f"AREA:NeBat#dc4646:NeBat {valuesTotal['NeBat']:.2f} kWh",
-    f"AREA:BatNe#00fd5c:BatNe {valuesTotal['BatNe']:.2f} kWh",
-    "LINE:PV#002a08:"
+    f"AREA:BatNe#00fd5c:BatNe {valuesTotal['BatNe']:.2f} kWh TotalVerbrauch {valuesTotal['Netto']:.2f} kWh",
+    "LINE:PV#002a08:TotalPV {valuesTotal['PV']:.2f} kWh"
   )
 
 #-----------------------------------------------------------------------------------------------------
