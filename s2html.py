@@ -145,11 +145,28 @@ def fetchValue(start, end):
   for k in rrd_result[1]:
     lResult.append(0)
 
+  selfP = 0  # PV self consumation
+  selfB = 0 # Battery self Consumation
+
   lnr = 0
   for line in rrd_result[2]:
     for i in range(0,len(lResult)):
       if str(line[i]) != "None":
         lResult[i] += line[i]
+
+    # line[0] = PV, line[1] = Ni, line[6] = Netto    
+    if str(line[0]) != "None" and str(line[6]) != "None" and str(line[1]) != "None":
+      # if PV >= Netto use Netto else use PV
+      if line[0] - line[6] >= 0:
+        self1 = line[6]
+      else:
+        self1 = line[0] 
+
+      selfP += self1
+
+      # selfBatterie = Netto - self1 - Netz
+      selfB += (line[6] - self1 - line[1])
+
     lnr += 1
   
   fEchoDebug(4, '%6.2f %6.2f %6.2f %6.2f %6.2f %6.2f' % (lResult[0], lResult[1], lResult[2], lResult[3], lResult[4], lResult[5]))
@@ -160,6 +177,9 @@ def fetchValue(start, end):
   for i in range(0,len(lResult)):
     # resolution 1 Min * 60 = 1 Std / 1000 = kWh
     dResult[rrd_result[1][i]] = lResult[i] * 60 / 1000
+
+  dResult["selfP"]  = selfP * 60 / 1000
+  dResult["selfB"] = selfB * 60 / 1000
 
   return dResult
 
@@ -205,8 +225,8 @@ def createInfraPng(start="1", end="1", step="1", pngfile="not_correct_png_parame
     "CDEF:BatNe=BatNe-raw,3600,*",
     "CDEF:Self1=PV,Netto,-",
     "CDEF:Self=Self1,0,GE,Netto,PV,IF",
-    f"AREA:Netto#003dff:BattVerbrauch {valuesTotal['Netto']:.2f} kWh",
-    f"AREA:Self#007215:DirektVerbrauch {vSelf:.2f} kWh",
+    f"AREA:Netto#003dff:BattVerbrauch {valuesTotal['selfB']:.2f} kWh {valuesTotal['Netto']:.2f} kWh",
+    f"AREA:Self#007215:PvVerbrauch {valuesTotal['selfP']:.2f} kWh",
     f"AREA:SoBat#fdce00:SoBat {valuesTotal['SoBat']:.2f} kWh:STACK",
     f"AREA:SoNe#b1fd00:SoNe {valuesTotal['SoNe']:.2f} kWh:STACK",
     f"AREA:Ni#FF0000:NetzImport {valuesTotal['Ni']:.2f} kWh",
