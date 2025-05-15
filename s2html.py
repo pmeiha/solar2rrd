@@ -232,7 +232,7 @@ def createInfraPng(start="1", end="1", step="1", pngfile="not_correct_png_parame
     f"AREA:Ni#FF0000:NetzImport {valuesTotal['Ni']:.2f} kWh",
     f"AREA:NeBat#dc4646:NeBat {valuesTotal['NeBat']:.2f} kWh",
     f"AREA:BatNe#00fd5c:BatNe {valuesTotal['BatNe']:.2f} kWh TotalVerbrauch {valuesTotal['Netto']:.2f} kWh",
-    "LINE:PV#002a08:TotalPV {valuesTotal['PV']:.2f} kWh"
+    f"LINE:PV#002a08:TotalPV {valuesTotal['PV']:.2f} kWh"
   )
 
 #-----------------------------------------------------------------------------------------------------
