@@ -108,11 +108,11 @@ def htmlEnd (outdata=[]):
 #-----------------------------------------------------------------------------------------------------
 # getime from stamp
 #-----------------------------------------------------------------------------------------------------
-def getTimeFromStamp(stamp = 1):
+def getTimeFromStamp(stamp = "1"):
 
-  #d = datetime.datetime.fromtimestamp(stamp)
-  #return d.strftime('%a %d %b %Y %H:%M:%S')
-  return ""
+  d = datetime.datetime.fromtimestamp(int(stamp))
+  return d.strftime('%a %d %b %Y %H:%M:%S')
+  #return ""
 
 #-----------------------------------------------------------------------------------------------------
 # getime actual time
