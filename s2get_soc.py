@@ -29,8 +29,8 @@ def getparameter():
   parser = argparse.ArgumentParser(description="get soc data from the battery")
   parser.add_argument("-u", "--url", help="url to solarmanager box (default http://10.42.10.11/v2/point)", default="http://10.42.10.11/v2/point")
   parser.add_argument("-D", "--device", help="url to solarmanager box (default http://10.42.10.11/v2/devices)", default="http://10.42.10.11/v2/devices")
-  #parser.add_argument("-r", "--rrdfile", help="rrd db file name (default /data/solar2rrd/rrd/s2_batt.rrd", default="/data/solar2rrd/rrd/s2_batt.rrd")
-  parser.add_argument("-r", "--rrdfile", help="rrd db file name (default rrd/s2.rrd)", default="rrd/s2_batt.rrd")
+  parser.add_argument("-r", "--rrdfile", help="rrd db file name (default /data/solar2rrd/rrd/s2_batt.rrd", default="/data/solar2rrd/rrd/s2_batt.rrd")
+  #parser.add_argument("-r", "--rrdfile", help="rrd db file name (default rrd/s2.rrd)", default="rrd/s2_batt.rrd")
   parser.add_argument("-d", "--daemon", help="rrdcached address", default="")
   
   args = parser.parse_args()
