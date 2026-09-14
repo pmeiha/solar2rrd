@@ -140,7 +140,7 @@ def s2rrd_sendGet(url="", hdr=""):
     global glob
 
     while glob['requesttime'] > time.time():
-        print("wait for request")
+        print(f"wait for request: {url}")
         time.sleep(1)
 
     glob['requesttime'] = time.time() + glob['requestinterval']
