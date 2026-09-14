@@ -127,7 +127,7 @@ def s2rrd_sendLogin(url="", data="", hdr=""):
         return True
 
     else:
-        logger.error(f'JSON data request not successful!. {url}\n{response.status_code}')
+        logger.error(f'JSON data request not successful!. {url}\n{response.status_code}\n{response.json()}')
         glob['LoginData'] = loginData
         glob['LogedIn'] = False
         return False
@@ -158,7 +158,7 @@ def s2rrd_sendGet(url="", hdr=""):
         return response.json()
 
     else:
-        logger.error(f'JSON data request not successful!. {url}\n{response.status_code}')
+        logger.error(f'JSON data request not successful!. {url}\n{response.status_code}\n{response.json()}')
         return None
 
 #-----------------------------------------------------------------------------------------------------
@@ -439,16 +439,21 @@ timetable = {}
 # for day in range(1,calendar.monthrange(iYear, iMonth)[1]+1 ):
 for day in [ iDay ]:  
     PowerDataDict = {}
-    start = datetime( iYear, iMonth, day, hour=0, minute=0,  second=0,  tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S%:z')
-    end   = datetime( iYear, iMonth, day, hour=23, minute=59, second=59, tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S%:z')
+    # start = datetime( iYear, iMonth, day, hour=0, minute=0,  second=0,  tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S%:z')
+    # end   = datetime( iYear, iMonth, day, hour=23, minute=59, second=59, tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S%:z')
+    start = datetime( iYear, iMonth, day, hour=0, minute=0,  second=0,  tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S') + '+01:00'
+    end   = datetime( iYear, iMonth, day, hour=23, minute=59, second=59, tzinfo=ZoneInfo("Europe/Zurich")).strftime('%Y-%m-%dT%H:%M:%S') + '+01:00'
     startH = urllib.parse.quote(start)
     endH   = urllib.parse.quote(end)
 
-    # print(start,end, startH, endH)
+    print(start,end, startH, endH)
+
     PowerDataDict["Consumption"] = s2rrd_getConsumption( start=startH, end=endH )
-    for device in ["Wechselrichter","Verbrauch","Batterie","Wärmepumpe","Ladestation","SmartPlug IT","Luftentfeuchter Keller","Bewässerung Garten",
+    for device in ["Wechselrichter","Verbrauch","Batterie","Ladestation","SmartPlug IT","Luftentfeuchter Keller","Bewässerung Garten",
                    "Bewässerung Topf","Begleitheizung","Zusatzheizung","Weihnacht1","Weihnacht2","Waschen","Trocknen","FrigoE","FrigoK"]:
         PowerDataDict[device] = s2rrd_getGenericSensor(id=s2rrd_getDeviceId(name = device), start=startH, end=endH)
+
+    PowerDataDict["Wärmepumpe"] = s2rrd_getGenericSensor(id=s2rrd_getDeviceId(name = "Wärmepumpe",type='Heatpump'), start=startH, end=endH)
 
     for hour in range(0, 24):
 
